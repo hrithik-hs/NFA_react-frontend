@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService'
+import { useNavigate, useParams } from 'react-router-dom';
+import EmployeeService from '../services/EmployeeService';
 
 class ViewEmployeeComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            id: this.props.match.params.id,
+            id: this.props.id,
             employee: {}
         }
     }
@@ -15,6 +16,9 @@ class ViewEmployeeComponent extends Component {
         EmployeeService.getEmployeeById(this.state.id).then( res => {
             this.setState({employee: res.data});
         })
+    }
+    cancel(){
+        this.props.navigate('/employees');
     }
 
     render() {
@@ -37,11 +41,18 @@ class ViewEmployeeComponent extends Component {
                             <div> { this.state.employee.emailId }</div>
                         </div>
                     </div>
-
+                    
+                    <button className="btn btn-danger col-md-3"  onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Back</button>
+                    <br/>
                 </div>
             </div>
         )
     }
 }
+function WithNavigate(props) {
+    let navigate = useNavigate();
+    let {id}=useParams();
+    return <ViewEmployeeComponent {...props} navigate={navigate} id={id} />
+}
 
-export default ViewEmployeeComponent
+export default WithNavigate
