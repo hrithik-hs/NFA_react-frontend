@@ -25,7 +25,7 @@ class ListEmployeeComponent extends Component {
         this.props.history.push(`/add-employee/${id}`);
     }
 
-    componentDidMount(){
+    componentDidMount(){ //1st
         EmployeeService.getEmployees().then((res) => {
             this.setState({ employees: res.data});
         });
@@ -56,7 +56,7 @@ class ListEmployeeComponent extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.state.employees.map(
+                                    this.state.employees.map(  // iterating over the list 
                                         employee => 
                                         <tr key = {employee.id}>
                                              <td> { employee.firstName} </td>   
