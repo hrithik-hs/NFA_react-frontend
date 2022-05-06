@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import EmployeeService from '../services/EmployeeService';
 
 class UpdateEmployeeComponent extends Component {
@@ -6,13 +7,14 @@ class UpdateEmployeeComponent extends Component {
         super(props)
 
         this.state = {
-            id: this.props.match.params.id,
+            id: this.props.id,
             firstName: '',
             lastName: '',
             emailId: ''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
+        this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.updateEmployee = this.updateEmployee.bind(this);
     }
 
@@ -32,7 +34,7 @@ class UpdateEmployeeComponent extends Component {
         console.log('employee => ' + JSON.stringify(employee));
         console.log('id => ' + JSON.stringify(this.state.id));
         EmployeeService.updateEmployee(employee, this.state.id).then( res => {
-            this.props.history.push('/employees');
+            this.props.navigate('/employees');
         });
     }
     
@@ -49,7 +51,7 @@ class UpdateEmployeeComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/employees');
+        this.props.navigate('/employees');
     }
 
     render() {
@@ -91,4 +93,10 @@ class UpdateEmployeeComponent extends Component {
     }
 }
 
-export default UpdateEmployeeComponent
+function WithNavigate(props) {
+    let navigate = useNavigate();
+    let {id}=useParams();
+    return <UpdateEmployeeComponent {...props} navigate={navigate} id={id} />
+}
+
+export default WithNavigate
