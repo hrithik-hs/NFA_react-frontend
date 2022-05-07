@@ -9,6 +9,11 @@ import CreateEmployeeComponent from './components/CreateEmployeeComponent';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
 import ViewEmployeeComponent from './components/ViewEmployeeComponent';
 
+import ListNfaComponent from './components/ListNfaComponent';
+import CreateNfaComponent from './components/CreateNfaComponent';
+import UpdateNfaComponent from './components/UpdateNfaComponent';
+import ViewNfaComponent from './components/ViewNfaComponent';
+
 function App() {
   return (
     <div>
@@ -16,7 +21,13 @@ function App() {
               <HeaderComponent />
                 <div className="container">
                     <Routes> 
-                          <Route path = "/" exact element = {<ListEmployeeComponent/>}></Route>
+                          <Route path = "/" exact element = {<ListNfaComponent/>}></Route>
+
+                          <Route path = "/nfas" element = {<ListNfaComponent/>}></Route>
+                          <Route path = "/add-nfa" element = {<CreateNfaComponent/>}></Route>
+                          <Route path = "/view-nfa/:id" element = {<ViewNfaComponent/>}></Route>
+                          <Route path = "/update-nfa/:id" element = {<UpdateNfaComponent/>}></Route>
+
                           <Route path = "/employees" element = {<ListEmployeeComponent/>}></Route>
                           <Route path = "/add-employee" element = {<CreateEmployeeComponent/>}></Route>
                           <Route path = "/view-employee/:id" element = {<ViewEmployeeComponent/>}></Route>
