@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = "http://localhost:8090/nfa";
-// const API_BASE_URL = "https://speproject.azurewebsites.net/nfadfas";
+// const API_BASE_URL = "http://localhost:8090/nfa";
+const API_BASE_URL = "https://nfatodfa.ddns.net/nfa";
 
 class EmployeeService {
 
