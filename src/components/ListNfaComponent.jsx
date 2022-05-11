@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NfadfaService from '../services/NfadfaService'
+import NfaService from '../services/NfaService'
 import { useNavigate, useParams } from 'react-router-dom';
 
 
@@ -22,7 +22,7 @@ class ListNfaComponent extends Component {
     }
 
     deleteNfa(id){
-        NfadfaService.deleteNfa(id).then( res => {
+        NfaService.deleteNfa(id).then( res => {
             this.setState({nfas: this.state.nfas.filter(nfa => nfa.id !== id)});
         });
     }
@@ -37,7 +37,7 @@ class ListNfaComponent extends Component {
     }
 
     componentDidMount(){ //1st
-        NfadfaService.getNfas().then((res) => {
+        NfaService.getNfas().then((res) => {
             this.setState({ nfas: res.data});
         });
     }

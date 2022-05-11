@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import NfadfaService from '../services/NfadfaService';
+import NfaService from '../services/NfaService';
 
 class UpdateNfaComponent extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class UpdateNfaComponent extends Component {
     
 
     componentDidMount(){
-        NfadfaService.getNfaById(this.state.id).then( (res) =>{
+        NfaService.getNfaById(this.state.id).then( (res) =>{
             let nfa = res.data;
             this.setState({
                     states: res.data.states,
@@ -53,7 +53,7 @@ class UpdateNfaComponent extends Component {
         
         console.log('nfa => ' + JSON.stringify(nfa));
         console.log('id => ' + JSON.stringify(this.state.id));
-        NfadfaService.updateNfa(nfa, this.state.id).then( res => {
+        NfaService.updateNfa(nfa, this.state.id).then( res => {
             this.props.navigate('/nfas');
         });
     }
