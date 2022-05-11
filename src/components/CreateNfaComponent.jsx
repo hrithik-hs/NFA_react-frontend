@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NfadfaService from '../services/NfadfaService';
+import NfaService from '../services/NfaService';
 import { useNavigate, useParams } from 'react-router-dom';
 
 class CreateNfaComponent extends Component {
@@ -32,7 +32,7 @@ class CreateNfaComponent extends Component {
                     transition: this.state.transition};
         console.log('NFA => ' + JSON.stringify(nfa));
 
-        NfadfaService.createNfa(nfa).then(res =>{
+        NfaService.createNfa(nfa).then(res =>{
             this.props.navigate('/nfas');
         });
     }
