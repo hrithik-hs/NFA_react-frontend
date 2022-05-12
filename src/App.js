@@ -27,11 +27,6 @@ function App() {
                           <Route path = "/add-nfa" element = {<CreateNfaComponent/>}></Route>
                           <Route path = "/view-nfa/:id" element = {<ViewNfaComponent/>}></Route>
                           <Route path = "/update-nfa/:id" element = {<UpdateNfaComponent/>}></Route>
-
-                          <Route path = "/employees" element = {<ListEmployeeComponent/>}></Route>
-                          <Route path = "/add-employee" element = {<CreateEmployeeComponent/>}></Route>
-                          <Route path = "/view-employee/:id" element = {<ViewEmployeeComponent/>}></Route>
-                          <Route path = "/update-employee/:id" element = {<UpdateEmployeeComponent/>}></Route>
                     </Routes>
                 </div>
               {/* <FooterComponent /> */}
