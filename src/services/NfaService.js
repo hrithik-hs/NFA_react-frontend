@@ -3,7 +3,7 @@ import axios from 'axios';
 // const API_BASE_URL = "http://localhost:8090/nfa";
 const API_BASE_URL = "https://nfatodfa.ddns.net/nfa";
 
-class EmployeeService {
+class NfaService {
 
     getNfas(){
         return axios.get(API_BASE_URL)
@@ -54,4 +54,4 @@ class EmployeeService {
     }
 }
 
-export default new EmployeeService()
+export default new NfaService()
